@@ -11,5 +11,6 @@ class TestPageViewModel extends ChangeNotifier {
 
   Future<void> onInit() async {
     allUsers = await _getAllUserUseCase.execute();
+    notifyListeners();
   }
 }

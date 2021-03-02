@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rest_client.dart';
+part of 'user_api_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
-class _RestClient implements RestClient {
-  _RestClient(this._dio, {this.baseUrl}) {
+class _UserApiProvider implements UserApiProvider {
+  _UserApiProvider(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
   }
 
@@ -16,11 +16,11 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
-  Future<List<User>> getUsers() async {
+  Future<UserResponseData> getUsers() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<List<dynamic>>('users',
+    final _result = await _dio.request<Map<String, dynamic>>('users',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -28,9 +28,7 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    var value = _result.data
-        .map((dynamic i) => User.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = UserResponseData.fromJson(_result.data);
     return value;
   }
 }

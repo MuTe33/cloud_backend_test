@@ -1,20 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'response_data.dart';
+part of 'user_response_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ResponseData _$ResponseDataFromJson(Map<String, dynamic> json) {
-  return ResponseData(
+UserResponseData _$UserResponseDataFromJson(Map<String, dynamic> json) {
+  return UserResponseData(
     code: json['code'] as int,
     meta: json['meta'] as Map<String, dynamic>,
-    data: json['data'] as List,
+    data: (json['data'] as List)
+        ?.map(
+            (e) => e == null ? null : User.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
-Map<String, dynamic> _$ResponseDataToJson(ResponseData instance) =>
+Map<String, dynamic> _$UserResponseDataToJson(UserResponseData instance) =>
     <String, dynamic>{
       'code': instance.code,
       'meta': instance.meta,

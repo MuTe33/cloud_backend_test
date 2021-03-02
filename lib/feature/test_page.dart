@@ -24,11 +24,15 @@ class _TestPageState extends State<TestPage> {
       create: (context) => model,
       child: Consumer<TestPageViewModel>(
         builder: (BuildContext context, TestPageViewModel model, _) {
-          return ListView.builder(
-            itemCount: model.allUsers.length,
-            itemBuilder: (context, index) {
-              return Text(model.allUsers[index].name);
-            },
+          return Scaffold(
+            body: model?.allUsers?.isEmpty != null
+                ? ListView.builder(
+                    itemCount: model?.allUsers?.length,
+                    itemBuilder: (context, index) {
+                      return Center(child: Text(model.allUsers[index].name));
+                    },
+                  )
+                : Center(child: Text('empty')),
           );
         },
       ),

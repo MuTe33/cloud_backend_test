@@ -6,7 +6,7 @@ class GetAllUserUseCase {
 
   final UserRepository _userRepository;
 
-  Future<List<User>> execute() async {
-    // await _userRepository.getAllUsers();
+  Future<List<User>> execute() {
+    return _userRepository.getAllUsers();
   }
 }

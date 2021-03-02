@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get_it/get_it.dart';
+import 'package:test_cloud_backend/api/user/user_api_provider.dart';
 import 'package:test_cloud_backend/domain/use_case/get_all_user_use_case.dart';
 import 'package:test_cloud_backend/feature/test_page_view_model.dart';
 import 'package:test_cloud_backend/repository/user_repository.dart';
@@ -9,7 +10,7 @@ GetIt _l = locator;
 
 void initSyncDependencies() {
   _initNetworking();
-  _initServices();
+  _initRemoteSources();
   _initRepositories();
   _initViewModels();
   _initUseCases();
@@ -23,7 +24,9 @@ void _initNetworking() async {
   _l.registerSingleton(dioInstance);
 }
 
-void _initServices() {}
+void _initRemoteSources() {
+  _l.registerFactory(() => UserApiProvider(_l.get()));
+}
 
 void _initRepositories() {
   _l.registerFactory(() => UserRepository(_l.get()));
